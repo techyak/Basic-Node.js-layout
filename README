@@ -1,6 +1,22 @@
 This is a basic structure for me to start from as I explore:
 
 Node.js
+Express.js
 CoffeeScript
 Jade
 Compass/Sass/Blueprint
+
+The watch command that I'm currently using to keep everything reloading correctly is:
+
+function nodewatch() {
+  find . | grep coffee$ | xargs coffee -cwl & 
+  
+  if [ $1 ]
+  then
+    nodemon $1.js &
+  else
+    nodemon app.js &
+  fi
+  
+  compass watch public/ &
+}
